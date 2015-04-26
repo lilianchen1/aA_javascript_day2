@@ -36,9 +36,7 @@ HanoiGame.prototype.move = function(startIdx, endIdx) {
   var to = hanoi.stack[endIdx][hanoi.stack[endIdx].length - 1];
   if (hanoi.isValidMove(startIdx, endIdx)) {
     hanoi.stack[endIdx].push(from);
-    console.log(hanoi.stack);
     hanoi.stack[startIdx].pop();
-    console.log(hanoi.stack);
   } else {
     return console.log("Not a valid move");
   }
@@ -49,13 +47,12 @@ HanoiGame.prototype.print = function() {
 };
 
 HanoiGame.prototype.promptMove = function(callback) {
-  hanoi.print;
+  hanoi.print();
 
   reader.question("Pick a starting tower index :", function(numString1){
     reader.question("Pick an ending tower index :", function(numString2){
       var startIdx = parseInt(numString1);
       var endIdx = parseInt(numString2);
-      console.log(hanoi.stack);
       callback(startIdx, endIdx);
     });
   });
@@ -76,6 +73,7 @@ HanoiGame.prototype.run = function(completionCallback) {
 };
 
 var printWon = function() {
+  hanoi.print();
   console.log("wonnnnnn");
   reader.close();
 };
